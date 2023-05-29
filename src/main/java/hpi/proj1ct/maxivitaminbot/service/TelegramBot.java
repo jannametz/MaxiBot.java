@@ -36,7 +36,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             "Type /deletedata to delete you own data\n" +
             "Type /settings here can you set your preferences.\n\n" +
             "If you have any questions, feedback or something is not working\n" +
-            " --> contact my jana.metz@stundent.hpi.uni-potsdam.de ";
+            " --> contact me jana.metz@stundent.hpi.uni-potsdam.de ";
 
     public TelegramBot(BotConfig config) {
         this.config = config;
