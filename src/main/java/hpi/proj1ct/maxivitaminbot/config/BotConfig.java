@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @Data
 @PropertySource("application.properties")
-public class BotConfig {
+public class BotConfig { //created project
     @Value("${bot.name}")
     String botName;
     @Value("${bot.token}")
