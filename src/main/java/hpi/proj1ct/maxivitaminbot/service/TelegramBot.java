@@ -34,6 +34,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             "Type /start for start and welcome message\n" +
             "Type /mydata to see data story about your self\n" +
             "Type /deletedata to delete you own data\n" +
+            "Type /subscription to articles\n" +
             "Type /settings here can you set your preferences.\n\n" +
             "If you have any questions, feedback or something is not working\n" +
             " --> contact me jana.metz@stundent.hpi.uni-potsdam.de ";
@@ -46,6 +47,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         listCommands.add(new BotCommand("/deletedata","delete my data"));
         listCommands.add(new BotCommand("/help","Ask for help"));
         listCommands.add(new BotCommand("/settings","set your preferences"));
+        listCommands.add(new BotCommand("/subscription","new articles"));
         try {
             this.execute(new SetMyCommands(listCommands, new BotCommandScopeDefault(),null));
         }
@@ -102,8 +104,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void startCommandReceived(long chatId, String name) {
-        String answer = "Hi," + name + "!" + "\nМеня зовут Maxi и я помогу тебе узнать пользу интересующего" +
-                " витамина и в каких продуктах он находиться!";
+        String answer = "Hi," + name + "!" + "\n" +
+                "My name is Maxi and I will help you find out the benefits of the vitamin " +
+                "you are interested in and what foods it is in!";
         log.info("Replied to user " + name);
         sendMessage(chatId, answer);
     }
