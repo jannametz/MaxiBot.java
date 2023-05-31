@@ -2,13 +2,14 @@ package hpi.proj1ct.maxivitaminbot.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.Data;
 
 import java.sql.Timestamp;
 
 /**
  * @author Jana Metz on 21.05.23
  */
-
+@Data
 @Entity(name = "userDatabase Table")
 public class User {
     @Id
