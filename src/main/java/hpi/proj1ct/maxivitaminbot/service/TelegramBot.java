@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
@@ -33,23 +32,26 @@ public class TelegramBot extends TelegramLongPollingBot {
             "You can execute commands from the main menu on the left or by typing command:\n" +
             "Type /start for start and welcome message\n" +
             "Type /mydata to see data story about your self\n" +
-            "Type /deletedata to delete you own data\n" +
+            "Type /delete data to delete you own data\n" +
+            "Type /subscription to articles\n" +
+            "Type /vitamin , our can choose the vitamin\n" +
             "Type /settings here can you set your preferences.\n\n" +
             "If you have any questions, feedback or something is not working\n" +
             " --> contact me jana.metz@stundent.hpi.uni-potsdam.de ";
 
     public TelegramBot(BotConfig config) {
         this.config = config;
-        List <BotCommand> listCommands = new ArrayList<>();
-        listCommands.add(new BotCommand("/start","welcome message"));
-        listCommands.add(new BotCommand("/mydata","get your data story"));
-        listCommands.add(new BotCommand("/deletedata","delete my data"));
-        listCommands.add(new BotCommand("/help","Ask for help"));
-        listCommands.add(new BotCommand("/settings","set your preferences"));
+        List<BotCommand> listCommands = new ArrayList<>();
+        listCommands.add(new BotCommand("/start", "welcome message"));
+        listCommands.add(new BotCommand("/mydata", "get your data story"));
+        listCommands.add(new BotCommand("/deletedata", "delete my data"));
+        listCommands.add(new BotCommand("/help", "Ask for help"));
+        listCommands.add(new BotCommand("/settings", "set your preferences"));
+        listCommands.add(new BotCommand("/vitamin", "chosee the vitamin"));
+        listCommands.add(new BotCommand("/subscription", "new articles"));
         try {
-            this.execute(new SetMyCommands(listCommands, new BotCommandScopeDefault(),null));
-        }
-        catch (TelegramApiException e) {
+            this.execute(new SetMyCommands(listCommands, new BotCommandScopeDefault(), null));
+        } catch (TelegramApiException e) {
             log.error("Error setting bot command list: " + e.getMessage());
         }
     }
@@ -87,9 +89,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void registerUser(Message message) {
-        if(userRepository.findById(message.getChatId()).isEmpty()){
+        if (userRepository.findById(message.getChatId()).isEmpty()) {
             var chatId = message.getChatId();
-            var chat  = message.getChat();
+            var chat = message.getChat();
             User user = new User();
             user.setChatId(chatId);
             user.setFirstName(chat.getFirstName());
@@ -102,8 +104,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void startCommandReceived(long chatId, String name) {
-        String answer = "Hi," + name + "!" + "\nМеня зовут Maxi и я помогу тебе узнать пользу интересующего" +
-                " витамина и в каких продуктах он находиться!";
+        String answer = "Hi," + name + "!" + "\n" +
+                "My name is Maxi and I will help you find out the benefits of the vitamin " +
+                "you are interested in and what foods it is in!";
         log.info("Replied to user " + name);
         sendMessage(chatId, answer);
     }
@@ -115,8 +118,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         try {
             execute(message);
         } catch (TelegramApiException e) {
-           throw new RuntimeException(e);
-           // log.error("Error occurred: " + e.getMessage());
+            throw new RuntimeException(e);
+            // log.error("Error occurred: " + e.getMessage());
         }
     }
 }
