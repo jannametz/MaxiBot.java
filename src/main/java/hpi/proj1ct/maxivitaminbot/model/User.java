@@ -2,13 +2,14 @@ package hpi.proj1ct.maxivitaminbot.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.Data;
 
 import java.sql.Timestamp;
 
 /**
  * @author Jana Metz on 21.05.23
  */
-
+@Data
 @Entity(name = "userDatabase Table")
 public class User {
     @Id
@@ -16,6 +17,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String username;
+    private String eMail;
+    private Long password;
 
     public Long getChatId() {
         return chatId;
@@ -49,6 +52,22 @@ public class User {
         this.username = username;
     }
 
+    public String getEMail() {
+        return eMail;
+    }
+
+    public void setEMail(String eMail) {
+        this.eMail = eMail;
+    }
+    public Long getPassword() {
+        return password;
+    }
+
+    public void setPassword(Long password) {
+        this.password = password;
+    }
+
+
     public Timestamp getRegisteredAt() {
         return registeredAt;
     }
@@ -67,6 +86,8 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", eMail='" + eMail + '\'' +
                 ", registeredAt=" + registeredAt +
                 '}';
     }
