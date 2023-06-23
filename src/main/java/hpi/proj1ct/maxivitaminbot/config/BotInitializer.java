@@ -1,6 +1,7 @@
 package hpi.proj1ct.maxivitaminbot.config;
 
 import hpi.proj1ct.maxivitaminbot.service.TelegramBot;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -15,6 +16,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
  */
 @Slf4j
 @Component
+@AllArgsConstructor
 public class BotInitializer {
     @Autowired
     TelegramBot bot;
@@ -25,8 +27,8 @@ public class BotInitializer {
         try {
             telegramBotsApi.registerBot(bot);
         } catch (TelegramApiException e) {
-           throw new RuntimeException(e);
-            //log.error("Error occurred: " + e.getMessage());
+          throw new RuntimeException(e);
+           // log.error("Error occurred: " + e.getMessage());
 
         }
     }

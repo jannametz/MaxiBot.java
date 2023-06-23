@@ -1,0 +1,30 @@
+[{
+  "vitaminName": "D",
+  "vitaminID": 1,
+  "benefit": "Vitamin D (called \"calciferol\") is a fat-soluble vitamin that is involved in the regulation of calcium-phosphorus metabolism, innate and acquired immunity"
+}
+,
+{
+  "vitaminName": "C",
+  "vitaminID": 2,
+  "benefit": "Vitamin D (called \"calciferol\") is a fat-soluble vitamin that is involved in the regulation of calcium-phosphorus metabolism, innate and acquired immunity"
+}
+  ,
+{
+  "vitaminName": "B",
+  "vitaminID": 3,
+  "benefit": "Vitamin D (called \"calciferol\") is a fat-soluble vitamin that is involved in the regulation of calcium-phosphorus metabolism, innate and acquired immunity"
+}
+  ,
+{
+  "vitaminName": "A",
+  "vitaminID": 4,
+  "benefit": "Vitamin D (called \"calciferol\") is a fat-soluble vitamin that is involved in the regulation of calcium-phosphorus metabolism, innate and acquired immunity"
+}
+  ,
+{
+  "vitaminName": "E",
+  "vitaminID": 5,
+  "benefit": "Vitamin D (called \"calciferol\") is a fat-soluble vitamin that is involved in the regulation of calcium-phosphorus metabolism, innate and acquired immunity"
+}
+]
